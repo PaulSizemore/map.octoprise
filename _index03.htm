@@ -11,7 +11,7 @@
 .content { padding:20px; background-color:lightgrey;} 
 @media screen and (min-width: 400px) {  
 .mapfit { width:100%; height: 40%; }
-.content {  width:100%; height: 60%; } 
+.content {  width:100%; } 
 }
 
 @media screen and (min-width: 800px) { 
@@ -43,32 +43,10 @@
         center: [38.896972, -77.009477]
       });
       
-      
-      
-//let locationOneIcon = mapfit.Icon();
-
-// create custom icon
-let myCustomIcon = mapfit.Icon();
-// specify icon url or filepath
-myCustomIcon.setIconUrl('ic_panorama_fish_eye_48px@2x.png');
-// specify icon dimensions
-myCustomIcon.setWidth(48);
-myCustomIcon.setHeight(48);
-
+let locationOneIcon = mapfit.Icon();
 let locationOne = mapfit.Marker();
-
-// associate icon with marker
-locationOne.setIcon(myCustomIcon);
-
-
-//let locationOne = mapfit.Marker([38.9023638,-77.05973619999997]);
-//locationOne.LatLng('38.9023638,-77.05973619999997')
-//locationOne.position('38.9023638,-77.05973619999997')
 locationOne.address = '1015 7TH STREET NW WASHINGTON, D.C. 20001'
-
-
-
-//locationOne.setIcon(locationOneIcon)
+locationOne.setIcon(locationOneIcon)
 // create custom click event for the marker 
 locationOne.on('click', function(event) {
 let targetOffset = document.getElementById('demo').offsetTop;
@@ -81,7 +59,7 @@ map.setCenter(locationOne.getPosition());
 let locationTwoIcon = mapfit.Icon();
 let locationTwo = mapfit.Marker();
 locationTwo.address = '4 F St NW, Washington, DC 20001'
-//locationTwo.setIcon(locationTwoIcon)
+locationTwo.setIcon(locationTwoIcon)
 // create custom click event for the marker 
 locationTwo.on('click', function(event) {
 let targetOffset = document.getElementById('demo').offsetTop;
@@ -90,9 +68,12 @@ document.getElementById("demo").innerHTML = "Location Two!";
 map.addMarker(locationTwo).then(function() {
 map.setCenter(locationTwo.getPosition()); 
 })
-
-
-
+// adding the place info to locationTwo
+//  let locationTwoInfo = mapfit.PlaceInfo();
+//       locationTwoInfo.setTitle('Second Location');
+//       locationTwoInfo.setDescription('<p>Second Location Desciption</br>Second Location Address</p>');
+//       locationTwo.setPlaceInfo(locationTwoInfo);
+//       map.addMarker(locationTwo)
     </script>
 </body>
 </html>
